@@ -1,4 +1,4 @@
-# EPUB Accessibility Evaluation
+# Nordic EPUB Evaluation
 
 A Cursor/skills.sh skill that evaluates **unzipped** EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2, and Nordic MathML Guidelines. Validation uses only the guideline version the EPUB declares in its package metadata.
 
@@ -7,10 +7,10 @@ A Cursor/skills.sh skill that evaluates **unzipped** EPUB files against the Nord
 With the [skills](https://skills.sh/docs/cli) CLI:
 
 ```bash
-npx skills add https://github.com/gauter/epub-accessibility-evaluation --skill epub-accessibility-evaluation
+npx skills add https://github.com/gauter/nordic-epub-evaluation --skill nordic-epub-evaluation
 ```
 
-For Cursor, add the skill to your project or user skills directory (e.g. `.cursor/skills/epub-accessibility-evaluation/`) and ensure `SKILL.md` plus the reference checklists are present.
+For Cursor, add the skill to your project or user skills directory (e.g. `.cursor/skills/nordic-epub-evaluation/`) and ensure `SKILL.md` plus the reference checklists are present.
 
 ## Requirements
 
