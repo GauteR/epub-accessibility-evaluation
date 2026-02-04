@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines version the EPUB declares (2015-1, 2020-1, or 2025-1), plus WCAG 2.2 and Nordic MathML Guidelines where applicable. Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Nordic EPUB Evaluation
@@ -56,12 +56,12 @@ Run checks in this order, applying **only** the requirements for the declared gu
 3. **Content structure** – Semantic HTML, heading hierarchy.
 4. **Images** – Alt text, figure markup (all versions).
 5. **Tables** – Headers, captions, scope (all versions).
-6. **MathML** (if present) – Nordic MathML Guidelines (same for all).
+6. **MathML** (if present) – Run validation against **both** checklists: [mathml-checklist.md](mathml-checklist.md) (Nordic) and [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB production). Report separate status and findings for each.
 7. **Page breaks** – Markers and page-list alignment per version (see table below).
 
 ### Phase 3: Report Generation
 
-Generate the report using the template below. **Guidelines** in the report must list only the identified version (e.g. "Nordic EPUB 2015-1") and WCAG 2.2. References section should include the URL for that Nordic version plus WCAG and MathML.
+Generate the report using the template below. **Guidelines** in the report must list only the identified version (e.g. "Nordic EPUB 2015-1") and WCAG 2.2. When MathML is present, include results for **both** MathML checklists (Nordic and NLB production) and a short summary of how the guidelines differ (see [mathml-guidelines-differences.md](mathml-guidelines-differences.md)). References section should include the URL for that Nordic version plus WCAG and MathML.
 
 ## Quick Reference
 
@@ -141,11 +141,12 @@ Use these default values when meaningful alt text is not provided:
 
 ### MathML Quick Checks
 
-- Use `<math xmlns="http://www.w3.org/1998/Math/MathML">`
-- No `<mfenced>` (deprecated)
-- No `<mlabeledtr>` for labels
-- Invisible operators for clarity: `&#x2062;` (multiplication), `&#x2061;` (function application)
-- Units with `mathvariant="normal"` for single letters
+Two checklists apply when MathML is present:
+
+- **Nordic** ([mathml-checklist.md](mathml-checklist.md)): `<math xmlns="http://www.w3.org/1998/Math/MathML">`; no `<mfenced>` (deprecated); no `<mlabeledtr>`; invisible operators `&#x2062;` (multiplication), `&#x2061;` (function application); units with `mathvariant="normal"` for single letters.
+- **NLB production** ([mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md)): `<math>` with `<semantics>`, inner `<mrow>`, `alttext`, `altimg`, `display`; `<mfenced>` required for parentheses; invisible operators &#8289;, &#8290; (numeric entities); xml:lang on ancestor; see checklist for full rules.
+
+Differences between the two are summarised in [mathml-guidelines-differences.md](mathml-guidelines-differences.md).
 
 ## Report Template
 
@@ -169,7 +170,8 @@ Use these default values when meaningful alt text is not provided:
 | Content Structure | ✅/⚠️/❌ | [count] |
 | Images | ✅/⚠️/❌ | [count] |
 | Tables | ✅/⚠️/❌ | [count] |
-| MathML | ✅/⚠️/❌/N/A | [count] |
+| MathML (Nordic checklist) | ✅/⚠️/❌/N/A | [count] |
+| MathML (NLB production) | ✅/⚠️/❌/N/A | [count] |
 | Page Breaks | ✅/⚠️/❌/N/A | [count] |
 
 **Overall**: [PASS/NEEDS WORK/FAIL]
@@ -178,15 +180,19 @@ Use these default values when meaningful alt text is not provided:
 
 ### 🔴 Critical Issues (must fix)
 
-[List critical issues with file paths and line references]
+[List critical issues with file paths and line references. When MathML is validated, separate or tag issues by guideline: Nordic vs NLB production.]
 
 ### 🟡 Warnings (should fix)
 
-[List warnings with recommendations]
+[List warnings with recommendations. Separate or tag by guideline when MathML-related.]
 
 ### 🟢 Recommendations (nice to have)
 
 [List optional improvements]
+
+### MathML: Forskjeller mellom retningslinjene
+
+(Include when MathML is present.) Kort oppsummering: Validering er kjørt mot både Nordic MathML-checklist og NLB production (mathml-guidelines). Forskjellene er beskrevet i [mathml-guidelines-differences.md](mathml-guidelines-differences.md) (struktur/semantics, display, mfenced vs mo, tusen-separator, alttext, kjemi/fysikk/kode, tabeller, m.m.).
 
 ## Files Examined
 
@@ -218,5 +224,8 @@ Apply severity **only for requirements of the declared guideline version**. Do n
   - 2025-1: [nordic-epub-checklist.md](nordic-epub-checklist.md) (2025-1)
   - 2020-1: [nordic-epub-checklist-2020-1.md](nordic-epub-checklist-2020-1.md)
   - 2015-1: [nordic-epub-checklist-2015-1.md](nordic-epub-checklist-2015-1.md)
-- For MathML-specific validation: [mathml-checklist.md](mathml-checklist.md)
+- For MathML validation (both checklists):
+  - Nordic: [mathml-checklist.md](mathml-checklist.md)
+  - NLB production: [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md)
+- For differences between the two MathML guidelines: [mathml-guidelines-differences.md](mathml-guidelines-differences.md)
 - For WCAG mapping: [wcag-mapping.md](wcag-mapping.md)
