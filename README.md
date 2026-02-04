@@ -7,7 +7,7 @@ A Cursor/skills.sh skill that evaluates **unzipped** EPUB files against the Nord
 With the [skills](https://skills.sh/docs/cli) CLI:
 
 ```bash
-npx skills add <owner>/epub-accessibility-evaluation
+npx skills add https://github.com/gauter/epub-accessibility-evaluation --skill epub-accessibility-evaluation
 ```
 
 For Cursor, add the skill to your project or user skills directory (e.g. `.cursor/skills/epub-accessibility-evaluation/`) and ensure `SKILL.md` plus the reference checklists are present.
