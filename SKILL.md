@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2 and Nordic MathML Guidelines; includes validation towards Daisy Pipeline (nordic-epub3-validate). Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.5"
+  version: "1.0.6"
 ---
 
 # Nordic EPUB Evaluation
@@ -12,6 +12,8 @@ Evaluate unzipped EPUBs against Nordic accessibility standards. **Validate only 
 ## Before Starting
 
 **Important**: This skill assumes the EPUB is unzipped. Ask the user for the path to the unzipped EPUB directory before proceeding.
+
+**All files must be systematically checked.** Do not rely on sampling: every content document (XHTML), the navigation document, and the package document must be included in the evaluation. Report which files were examined and ensure checks (images, tables, MathML, page breaks, structure) cover all relevant files.
 
 Evaluation can include **validation against the Daisy Pipeline** (the nordic-epub3-validate job). This skill covers **manual** evaluation and reporting against Nordic/WCAG/MathML, and can be used to interpret or supplement reports from automated validation.
 
@@ -51,19 +53,19 @@ EPUB files can be validated against the **Daisy Pipeline job "nordic-epub3-valid
 
 1. **Analyze package.opf**: Check metadata, manifest, spine (against the identified guideline).
 2. **Check navigation**: Review `nav.xhtml` structure (see version-specific requirements below).
-3. **Sample content files**: Examine representative XHTML files.
+3. **Check all content files**: Examine every XHTML content document in the EPUB (per spine/manifest). Do not sample; systematic coverage of all files is required.
 
 ### Phase 2: Compliance Checks (version-specific)
 
-Run checks in this order, applying **only** the requirements for the declared guideline version:
+Run checks in this order, applying **only** the requirements for the declared guideline version. **Apply each check to all relevant files** (every content document where the element type appears): do not sample.
 
 1. **Package metadata** – Dublin Core and any accessibility metadata required by that version.
 2. **Navigation document** – TOC, page-list, landmarks per version (see table below).
-3. **Content structure** – Semantic HTML, heading hierarchy.
-4. **Images** – Alt text, figure markup (all versions).
-5. **Tables** – Headers, captions, scope (all versions).
-6. **MathML** (if present) – Run validation against the [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines, 2022). See the addendum below for changes required to upgrade to the newer MathML guideline version.
-7. **Page breaks** – Markers and page-list alignment per version (see table below).
+3. **Content structure** – Semantic HTML, heading hierarchy (in every content file).
+4. **Images** – Alt text, figure markup in every file that contains images (all versions).
+5. **Tables** – Headers, captions, scope in every file that contains tables (all versions).
+6. **MathML** (if present) – Run validation against the [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines, 2022) for every file that contains MathML. See the addendum below for changes required to upgrade to the newer MathML guideline version.
+7. **Page breaks** – Markers and page-list alignment per version in every paginated content file (see table below).
 
 ### Phase 3: Report Generation
 
