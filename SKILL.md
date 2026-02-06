@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2 and Nordic MathML Guidelines; includes validation towards Daisy Pipeline (nordic-epub3-validate). Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.9"
+  version: "1.0.10"
 ---
 
 # Nordic EPUB Evaluation
@@ -186,14 +186,6 @@ List **every** finding in the table below. One row per finding. Include file pat
 |----------|----------|------|------|-------------------------------|------------------------|--------|
 | 🔴/🟡/🟢 | Package / Navigation / Content / Images / Tables / MathML / Page breaks | e.g. 590233-007-chapter.xhtml | e.g. 42 | Quote or short description of the current markup or value | Exact requirement from the version-specific or MathML checklist | What the operator should change (e.g. "Add `<thead>` with `<th scope=\"col\">` for each column") |
 | … | … | … | … | … | … | … |
-
-- **Severity**: 🔴 Critical (must fix), 🟡 Warning (should fix), 🟢 Recommendation (nice to have).
-- **Category**: Package metadata, Accessibility metadata, Navigation, Content structure, Images, Tables, MathML, Page breaks.
-- **File**: Path relative to EPUB root (e.g. `package.opf`, `nav.xhtml`, `590233-007-chapter.xhtml`).
-- **Line**: Line number in the file where the issue is (if applicable).
-- **Current**: Relevant snippet, attribute value, or short description of what the file contains.
-- **Checklist requirement**: The requirement from nordic-epub-checklist (version) or mathml-checklist-nlb-production.md that is not met or is only partly met.
-- **Action**: Concrete, step-by-step instruction so a production operator can fix the issue without guessing.
 
 Add more rows as needed. Group by severity (Critical first, then Warnings, then Recommendations) if you prefer, or keep one table sorted by file/line. Ensure every deviation from the checklists is listed.
 
