@@ -3,8 +3,11 @@
 Dette dokumentet beskriver hvordan **NLB production**-kravene (202202-mathml-requirements-nlb-production.tex fra mathml-guidelines) avviker fra **Nordic MathML Guidelines Checklist** (mathml-checklist.md). Brukes for å forstå avvik mellom de to valideringene og i rapporten.
 
 Kilder:
-- NLB production: [202202-mathml-requirements-nlb-production.tex](https://github.com/nlbdev/mathml-guidelines/blob/main/archive/202202-mathml-requirements-nlb-production.tex)
+
+- NLB production: [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (basert på [202202-mathml-requirements-nlb-production.tex](https://github.com/nlbdev/mathml-guidelines/blob/main/archive/202202-mathml-requirements-nlb-production.tex))
 - Nordic checklist: [mathml-checklist.md](mathml-checklist.md)
+
+*Innholdet i denne diffen er verifisert mot begge sjekklistene.*
 
 ---
 
@@ -30,7 +33,7 @@ Kilder:
 | | NLB production | Nordic checklist |
 |---|----------------|------------------|
 | **Parenteser** | **Krever** `<mfenced open="(" close=")">` (og tilsvarende for `[]`, `{}`). | **Forbyr** `<mfenced>`; bruk `<mo>` for fences. |
-| **Absoluttverdi** | `<mfenced open="\|" close="\|">`. | Ikke spesifisert. |
+| **Absoluttverdi** | `<mfenced open="\|" close="\|">` (begge attributter verdi pipe), jf. NLB-checklisten. | Ikke spesifisert. |
 
 ---
 

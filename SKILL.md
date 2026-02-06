@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2 and Nordic MathML Guidelines; includes validation towards Daisy Pipeline (nordic-epub3-validate). Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.4"
+  version: "1.0.5"
 ---
 
 # Nordic EPUB Evaluation
@@ -149,7 +149,7 @@ Use these default values when meaningful alt text is not provided:
 
 When MathML is present, validate against the **NLB MathML Guidelines checklist** ([mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md), 2022):
 
-- `<math xmlns="http://www.w3.org/1998/Math/MathML">`; no `<mfenced>` (deprecated); no `<mlabeledtr>`; invisible operators `&#x2062;` (multiplication), `&#x2061;` (function application); units with `mathvariant="normal"` for single letters. See the full checklist for all rules.
+- Use the checklist as the single source of truth. See the full checklist for all rules.
 
 **Addendum — upgrading to the new MathML guideline version:** To evaluate against the newer MathML guidelines (or to report what would need to change for an EPUB to comply), use [mathml-guidelines-differences.md](mathml-guidelines-differences.md), which describes the differences between the 2022 checklist and the newer requirements (structure/semantics, display, mfenced vs mo, invisible operators, alttext/altimg, etc.).
 
