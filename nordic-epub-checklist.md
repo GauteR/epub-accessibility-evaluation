@@ -3,6 +3,7 @@
 Complete checklist for **Nordic Guidelines for Production of Accessible EPUB 3, version 2025-1**. Use this checklist only when the EPUB declares 2025-1 (e.g. `nordic:guidelines` or `dcterms:conformsTo`).
 
 For EPUBs declaring **2015-1** or **2020-1**, use the version-specific checklists instead:
+
 - [nordic-epub-checklist-2015-1.md](nordic-epub-checklist-2015-1.md)
 - [nordic-epub-checklist-2020-1.md](nordic-epub-checklist-2020-1.md)
 
@@ -42,6 +43,7 @@ For EPUBs declaring **2015-1** or **2020-1**, use the version-specific checklist
 ### Accessibility Metadata
 
 Minimum required:
+
 - [ ] `schema:accessMode` - at least `textual`
 - [ ] `schema:accessModeSufficient` - at least `textual`
 - [ ] `schema:accessibilityFeature` includes:
@@ -54,16 +56,19 @@ Minimum required:
 - [ ] `a11y:certifiedBy` present
 
 If images with descriptions:
+
 - [ ] `schema:accessMode` includes `visual`
 - [ ] `schema:accessibilityFeature` includes `alternativeText`
 - [ ] `schema:accessibilityFeature` includes `longDescription` (if applicable)
 
 If pagination:
+
 - [ ] `schema:accessibilityFeature` includes `pageBreakMarkers`
 - [ ] `schema:accessibilityFeature` includes `pageNavigation`
 - [ ] `pageBreakSource` with ISBN
 
 If MathML:
+
 - [ ] `schema:accessibilityFeature` includes `MathML`
 
 ### Manifest
@@ -140,9 +145,23 @@ If MathML:
 - [ ] `<meta name="viewport" content="width=device-width"/>`
 - [ ] `<title>` matches document's main heading
 
+### Proper XHTML Markup
+
+Content documents must be well-formed XHTML5 and use valid structure so that reading systems and assistive technologies can parse and expose content correctly.
+
+- [ ] **Well-formed XML**: All elements properly closed (including self-closing form e.g. `<br/>`, `<img ... />`); all attribute values in double quotes; no unescaped `<` or `&` in text (use entities or CDATA where needed).
+- [ ] **Document structure**: Root `<html>`; exactly one `<head>` and one `<body>`; no text or elements outside the document tree.
+- [ ] **Valid nesting**: Block elements (e.g. `<p>`, `<div>`, `<section>`) not inside inline elements (e.g. `<a>`, `<span>`); heading hierarchy and list structure (e.g. `<ul>`/`<ol>` only with `<li>` children) correct.
+- [ ] **Character encoding**: File saved as UTF-8; XML declaration encoding matches; special characters either UTF-8 or valid entities (e.g. `&amp;`, `&lt;`, `&nbsp;` where required).
+- [ ] **No deprecated markup**: No `<font>`, `<center>`, `<strike>`, presentational attributes (e.g. `align`, `bgcolor`); use CSS and semantic elements instead.
+- [ ] **IDs unique**: Every `id` attribute is unique within the document; no duplicate `id` values.
+
+EPUBCheck or similar validators can catch many well-formedness and structure errors; manual review should confirm semantic and Nordic-specific requirements.
+
 ### File Naming
 
 Pattern: `[UID]-[XXX]-[role].xhtml`
+
 - [ ] UID matches `dc:identifier`
 - [ ] XXX is zero-padded sequence number
 - [ ] role matches section's ARIA role (minus "doc-")
@@ -150,6 +169,7 @@ Pattern: `[UID]-[XXX]-[role].xhtml`
 ### Structural Semantics
 
 Top-level sections require:
+
 - [ ] `role` attribute (from DPUB-ARIA)
 - [ ] `epub:type` with partition value (`frontmatter`, `bodymatter`, `backmatter`)
 - [ ] `aria-labelledby` if section has heading
@@ -166,12 +186,14 @@ Top-level sections require:
 ### Pagination
 
 Block page break:
+
 ```html
 <div epub:type="pagebreak" role="doc-pagebreak" 
      class="page-normal" id="page-38" aria-label="38"/>
 ```
 
 Inline page break:
+
 ```html
 <span epub:type="pagebreak" role="doc-pagebreak" 
       class="page-normal" id="page-38" aria-label="38"/>
@@ -187,6 +209,7 @@ Inline page break:
 ### Images
 
 Figure with image:
+
 ```html
 <figure class="image">
   <figcaption>...</figcaption>
@@ -205,6 +228,7 @@ Figure with image:
 - [ ] Image series wrapped in `<figure class="image-series">`
 
 Image file requirements:
+
 - [ ] Stored in `EPUB/images/`
 - [ ] Named `[UID]-[XXX].[jpg|png]`
 - [ ] Cover named `cover.jpg` or `cover.png`
@@ -234,6 +258,7 @@ Image file requirements:
 ### Notes
 
 End notes:
+
 ```html
 <section role="doc-endnotes" epub:type="endnotes">
   <h2>Notes</h2>
@@ -247,6 +272,7 @@ End notes:
 ```
 
 Note references:
+
 ```html
 <a id="ref1" href="#fn1" role="doc-noteref" epub:type="noteref">1</a>
 ```
