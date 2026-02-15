@@ -23,11 +23,14 @@ Open a terminal in the folder where you want to use the skill and run:
 npx skills add https://github.com/gauter/nordic-epub-evaluation --skill nordic-epub-evaluation
 ```
 
-This uses the [skills CLI](https://skills.sh/docs/cli). If you use another tool that supports the Skill format, clone or download this repository and point it at the folder that contains `SKILL.md` and the checklist files.
+When you run `npx skills add …`, you can choose which agent to install the skill for. The skills installer supports **Cursor**, **GitHub Copilot**, **Claude**, and others. Select the agent you use so the skill is installed in the right place.
 
 ## Requirements
 
-- The EPUB must be **unzipped**. Provide the path to the unpacked EPUB directory (containing `META-INF/`, `EPUB/`, `mimetype`, etc.).
+Either:
+
+- Show the agent where it can find the EPUB. The EPUB must be **unzipped**. Provide the path to the unpacked EPUB directory (containing `META-INF/`, `EPUB/`, `mimetype`, etc.).
+- Or open a project with the EPUB in it's unzipped for in it. (Or in the future, use MCP to get the unzipped file from the filesystem)
 
 ## What It Validates
 
