@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2 and Nordic MathML Guidelines; includes validation towards Daisy Pipeline (nordic-epub3-validate). Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.10"
+  version: "1.0.11"
 ---
 
 # Nordic EPUB Evaluation
@@ -74,7 +74,7 @@ Generate the report using the template below. **Guidelines** in the report must 
 ### Version-specific requirements (validate only the row for the declared version)
 
 | Requirement | 2015-1 | 2020-1 | 2025-1 |
-|-------------|--------|--------|--------|
+| ------------- | -------- | -------- | -------- |
 | **Nav TOC** | `nav[epub:type="toc"]` required | `nav[epub:type="toc"]`; role="doc-toc" recommended | `nav[role="doc-toc"][epub:type="toc"]` required |
 | **Nav page-list** | If paginated: `nav[epub:type="page-list"]` | Same + role="doc-pagelist" recommended | `nav[role="doc-pagelist"][epub:type="page-list"]` required when paginated |
 | **Landmarks** | Optional | Optional | Optional |
@@ -121,7 +121,7 @@ For 2015-1 or 2020-1, consult the official guideline document for the required a
 Navigation: see version-specific table above. Content document checks below apply to all versions except page breaks (role="doc-pagebreak" required only for 2025-1).
 
 | Element | Requirement (all versions unless noted) |
-|---------|----------------------------------------|
+| --- | ---------------- | ------------------ |
 | `<html>` | `xmlns`, `xmlns:epub`, `xml:lang`, `lang` attributes |
 | `<section>` | `role` and/or `epub:type` for semantic sections |
 | `<h1>`-`<h6>` | Correct hierarchy, no skipped levels |
@@ -135,7 +135,7 @@ Navigation: see version-specific table above. Content document checks below appl
 Use these default values when meaningful alt text is not provided:
 
 | Norwegian | English | Use for |
-|-----------|---------|---------|
+| --- | ---------------- | ------------------ |
 | Foto. | Photo. | Photographs |
 | Illustrasjon. | Illustration. | Illustrations |
 | Figur. | Figure. | Diagrams, charts |
@@ -212,7 +212,7 @@ Add more rows as needed. Group by severity (Critical first, then Warnings, then 
 Apply severity **only for requirements of the declared guideline version**. Do not treat "missing 2025-1 requirement" as critical when the EPUB declares 2015-1.
 
 | Level | Criteria |
-|-------|----------|
+| ------- | ---------- |
 | 🔴 Critical | Breaks accessibility for the declared version; missing required elements or invalid structure per that version |
 | 🟡 Warning | Suboptimal but functional; missing recommended elements per that version |
 | 🟢 Recommendation | Enhancements, or requirements from a newer guideline version (mention only if useful) |
