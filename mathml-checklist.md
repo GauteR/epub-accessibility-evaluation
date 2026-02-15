@@ -77,12 +77,14 @@ Validation checklist for MathML content in EPUB publications.
 ### `<mtext>` - Text
 
 Use sparingly, only when visually required:
+
 - [ ] Text in tabular math (equation solving)
 - [ ] Notation labels: `<mtext>numerator</mtext>`
 - [ ] Subscript text: `<msub><mi>g</mi><mtext>weight</mtext></msub>`
 - [ ] Punctuation at end of expressions: `<mtext>.</mtext>`
 
 Avoid using `<mtext>` for:
+
 - [ ] Explanatory text between expressions (use regular HTML)
 - [ ] Text that can be outside `<math>` element
 
@@ -124,6 +126,7 @@ Avoid using `<mtext>` for:
 - [ ] `<munderover>`: base, underscript, overscript
 
 Common uses:
+
 - [ ] Summation limits: `<munder><mo>∑</mo><mrow>...</mrow></munder>`
 - [ ] Vector arrows: `<mover><mi>x</mi><mo>→</mo></mover>`
 - [ ] Bar notation: `<mover><mi>x</mi><mo>&#8254;</mo></mover>`
@@ -131,6 +134,7 @@ Common uses:
 ### `<mmultiscripts>` - Multiple Scripts
 
 For prescripts and multiple postscripts:
+
 ```xml
 <mmultiscripts>
   <mi>A</mi>           <!-- base -->
@@ -196,13 +200,14 @@ For prescripts and multiple postscripts:
 Use for disambiguation:
 
 | Character | Code | Use |
-|-----------|------|-----|
+| --- | ---------------- | ------------------ |
 | Invisible times | `&#x2062;` | Implicit multiplication |
 | Function application | `&#x2061;` | Function of argument |
 | Invisible plus | `&#x2064;` | Mixed number parts |
 | Invisible comma | `&#x2063;` | Implicit separator |
 
 Example - number with unit:
+
 ```xml
 <mn>100</mn>
 <mo rspace="0.25em">&#x2062;</mo>
@@ -214,6 +219,7 @@ Example - number with unit:
 ### Must Use Correct Unicode
 
 Common confusions to check:
+
 - [ ] Greek γ (U+03B3) vs Latin y
 - [ ] Greek ρ (U+03C1) vs Latin p
 - [ ] Greek χ (U+03C7) vs Latin x
@@ -250,6 +256,7 @@ Common confusions to check:
 ## Content as Images
 
 When MathML cannot represent content:
+
 - [ ] Capture as image
 - [ ] Use `alt="equation"` or `alt="drawing"`
 - [ ] Provide MathML in image description where possible

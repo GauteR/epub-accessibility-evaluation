@@ -44,7 +44,7 @@ Reference: [mathml-guidelines archive](https://github.com/nlbdev/mathml-guidelin
 Use numeric entities; required where applicable to avoid ambiguity.
 
 | Use | Numeric entity |
-|-----|-----------------|
+| --- | ---------------- | ------------------ |
 | Function application | &#8289; |
 | Invisible multiplication | &#8290; |
 | Invisible separator | &#8291; |
@@ -70,7 +70,7 @@ Use numeric entities; required where applicable to avoid ambiguity.
 
 ## Numbers and Decimals
 
-- [ ] Decimal in a **single** `<mn>` (e.g. `<mn>20,0</mn>` or `<mn>20.0</mn>`); do not split into `<mn>20</mn><mo>,</mo><mn>0</mn>.
+- [ ] Decimal in a **single** `<mn>` (e.g. `<mn>20,0</mn>` or `<mn>20.0</mn>`); do not split into `<mn>20</mn><mo>,</mo><mn>0</mn>`.
 - [ ] **No thousand separators** in `<mn>`; use `<mn>164000</mn>` not separate digits with space or mtext (TTS would split into 164 and 0).
 
 ## Token Elements

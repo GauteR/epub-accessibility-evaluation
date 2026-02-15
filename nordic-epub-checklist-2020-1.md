@@ -135,6 +135,15 @@ File name must contain the string "nav" (e.g. nav.xhtml). Required: `<nav epub:t
 - [ ] `<head>` children in required order: (1) `<meta charset="UTF-8">`, (2) `<title>` (must match dc:title in package or document heading), (3) `<meta name="dc:identifier" content="[production UID]">` (must match package), (4) `<meta name="viewport" content="width=device-width">`
 - [ ] `xml:lang` and `lang` same value per content file
 
+### Proper XHTML Markup
+
+- [ ] **Well-formed XML**: All elements closed; attribute values in double quotes; no unescaped `<` or `&` in text.
+- [ ] **Document structure**: Root `<html>`; one `<head>` and one `<body>`; no content outside the document tree.
+- [ ] **Valid nesting**: No block elements inside inline elements; correct list and heading structure.
+- [ ] **Character encoding**: UTF-8; special characters as UTF-8 or valid entities.
+- [ ] **No deprecated markup**: No `<font>`, `<center>`, presentational attributes; use CSS and semantic elements.
+- [ ] **IDs unique**: Every `id` unique within the document.
+
 ### File Naming
 
 Pattern: `[pid]-[XXX].xhtml` or `[pid]-XXX-[epub-type].xhtml`. Consult 2020-1 spec for allowed suffixes.
@@ -151,6 +160,8 @@ Pattern: `[pid]-[XXX].xhtml` or `[pid]-XXX-[epub-type].xhtml`. Consult 2020-1 sp
 - [ ] No nested section as first child of body when heading structure does not warrant it
 
 ### Headings
+
+A logical heading hierarchy (no skipped levels) lets screen readers and other assistive technologies navigate by headings and understand document structure.
 
 - [ ] Heading hierarchy present; no skipped levels
 - [ ] `<h1>` for top-level content heading; when pagebreak div is first, `<h1>` follows it
