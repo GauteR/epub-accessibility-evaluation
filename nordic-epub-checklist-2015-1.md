@@ -169,6 +169,8 @@ Pattern: `[pid]-[XXX].xhtml` or `[pid]-XXX-[epub-type].xhtml`. The values frontm
 
 ### Headings
 
+A logical heading hierarchy (no skipped levels) lets screen readers and other assistive technologies navigate by headings and understand document structure.
+
 - [ ] Heading hierarchy present; no skipped levels
 - [ ] `<h1>` for top-level content heading; when pagebreak div is first, `<h1>` follows it
 - [ ] Section headings in `<h2>`–`<h6>` as appropriate

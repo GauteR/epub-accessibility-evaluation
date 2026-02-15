@@ -177,6 +177,8 @@ Top-level sections require:
 
 ### Headings
 
+A logical heading hierarchy (no skipped levels) lets screen readers and other assistive technologies navigate by headings and understand document structure.
+
 - [ ] Correct hierarchy (no skipped levels)
 - [ ] Top-level content headings are `<h1>` (or `<h2>` in parts)
 - [ ] `<hgroup>` for heading + subtitle combinations
