@@ -121,7 +121,7 @@ For 2015-1 or 2020-1, consult the official guideline document for the required a
 Navigation: see version-specific table above. Content document checks below apply to all versions except page breaks (role="doc-pagebreak" required only for 2025-1).
 
 | Element | Requirement (all versions unless noted) |
-| --- | ---------------- | ------------------ |
+| --------- | ---------------- |
 | `<html>` | `xmlns`, `xmlns:epub`, `xml:lang`, `lang` attributes |
 | `<section>` | `role` and/or `epub:type` for semantic sections |
 | `<h1>`-`<h6>` | Correct hierarchy, no skipped levels |
