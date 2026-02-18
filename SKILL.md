@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2 and Nordic MathML Guidelines; includes validation towards Daisy Pipeline (nordic-epub3-validate). Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.11"
+  version: "1.0.12"
 ---
 
 # Nordic EPUB Evaluation
@@ -62,12 +62,12 @@ epub-directory/
 3. **Content structure** – Semantic HTML, heading hierarchy (in every content file).
 4. **Images** – Alt text, figure markup in every file that contains images (all versions).
 5. **Tables** – Headers, captions, scope in every file that contains tables (all versions).
-6. **MathML** (if present) – **You must perform** a full validation against the [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines, 2022) for **every** file that contains MathML. Apply all checklist items (structure/semantics, alttext, altimg, display, mfenced, invisible operators, decimals in a single `<mn>`, comparison operators, etc.) to each MathML expression; do not recommend that "a review is recommended" — carry out the review and report findings. See the addendum below for changes required to upgrade to the newer MathML guideline version.
+6. **MathML** (if present) – **You must perform** a full validation for **every** file that contains MathML. Use the checklist for the declared version: **2015-1** → [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines); **2020-1 or 2025-1** → [mathml-checklist.md](mathml-checklist.md) (Nordic MathML Guidelines). Apply all checklist items to each MathML expression; do not recommend that "a review is recommended" — carry out the review and report findings. When the declared version is 2015-1 (NLB checklist used), see the addendum below for changes required to upgrade to the newer MathML guideline version.
 7. **Page breaks** – Markers and page-list alignment per version in every paginated content file (see table below).
 
 ### Phase 3: Report Generation
 
-Generate the report using the template below. **Guidelines** in the report must list only the identified version (e.g. "Nordic EPUB 2015-1") and WCAG 2.2. The report is for **production operators** and must be **actionable**. For every finding, record: file path, line number, current content (snippet or summary), checklist requirement not met, and concrete action. Put **all** findings in the **Detailed findings table** (one row per finding); do not only list issues in prose or recommend that "a review be done". When MathML is present, add one table row per MathML finding (file, line, current markup/attribute, NLB checklist requirement, action). If relevant, add a note on what would need to change for the newer MathML guideline version (see addendum). References section should include the URL for that Nordic version plus WCAG and MathML.
+Generate the report using the template below. **Guidelines** in the report must list only the identified version (e.g. "Nordic EPUB 2015-1") and WCAG 2.2; when MathML is present, state which MathML checklist was used (NLB for 2015-1, Nordic for 2020-1/2025-1). The report is for **production operators** and must be **actionable**. For every finding, record: file path, line number, current content (snippet or summary), checklist requirement not met, and concrete action. Put **all** findings in the **Detailed findings table** (one row per finding); do not only list issues in prose or recommend that "a review be done". When MathML is present, add one table row per MathML finding (file, line, current markup/attribute, requirement from the applicable MathML checklist, action). When the declared version is 2015-1 and MathML was validated against NLB, add a note on what would need to change for the newer MathML guideline version (see addendum). References section should include the URL for that Nordic version plus WCAG and MathML.
 
 ## Quick Reference
 
@@ -80,6 +80,7 @@ Generate the report using the template below. **Guidelines** in the report must 
 | **Landmarks** | Optional | Optional | Optional |
 | **Page breaks in content** | `epub:type="pagebreak"` | Same; role="doc-pagebreak" recommended | `epub:type="pagebreak"` and `role="doc-pagebreak"` required |
 | **Accessibility metadata in package** | Check 2015-1 spec for required set | Check 2020-1 spec for required set | schema:accessMode, accessModeSufficient, accessibilityFeature, accessibilityHazard, dcterms:conformsTo, a11y:certifiedBy (see below) |
+| **MathML checklist** | NLB ([mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md)) | Nordic ([mathml-checklist.md](mathml-checklist.md)) | Nordic ([mathml-checklist.md](mathml-checklist.md)) |
 
 When the EPUB declares 2015-1 or 2020-1, **do not** report missing 2025-1-only requirements (e.g. nav roles, doc-pagebreak role) as failures; you may mention them as optional improvements if desired.
 
@@ -147,9 +148,14 @@ Use these default values when meaningful alt text is not provided:
 
 ### MathML validation (required when MathML is present)
 
-When MathML is present, **you (the evaluator) must run** the full **NLB MathML Guidelines checklist** ([mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md), 2022) on **every** content file that contains MathML. Do not state that "a full review is recommended" — perform the review yourself and report concrete findings (e.g. missing semantics/mrow, missing or invalid alttext/altimg, display, mfenced vs mo, invisible operators, decimals split across elements, etc.). Use the checklist as the single source of truth; apply all applicable rules from the full checklist.
+When MathML is present, **you (the evaluator) must run** the full MathML checklist on **every** content file that contains MathML. Use the checklist for the declared version:
 
-**Addendum — upgrading to the new MathML guideline version:** To evaluate against the newer MathML guidelines (or to report what would need to change for an EPUB to comply), use [mathml-guidelines-differences.md](mathml-guidelines-differences.md), which describes the differences between the 2022 checklist and the newer requirements (structure/semantics, display, mfenced vs mo, invisible operators, alttext/altimg, etc.).
+- **2015-1**: Full [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines) — apply all items (structure/semantics, alttext, altimg, display, mfenced, invisible operators, decimals in a single `<mn>`, comparison operators, etc.).
+- **2020-1 or 2025-1**: Full [mathml-checklist.md](mathml-checklist.md) (Nordic MathML Guidelines) — apply all applicable rules from the full checklist.
+
+Do not state that "a full review is recommended" — perform the review yourself and report concrete findings. Use the chosen checklist as the single source of truth.
+
+**Addendum — upgrading to the new MathML guideline version:** Include this addendum only when the declared version is **2015-1** (validation was against NLB). Use [mathml-guidelines-differences.md](mathml-guidelines-differences.md) to describe what would need to change for the EPUB to comply with the Nordic MathML Guidelines. When the declared version is 2020-1 or 2025-1, validation was already against Nordic MathML Guidelines; state "N/A — validation was against Nordic MathML Guidelines" or omit the addendum.
 
 ## Report Template
 
@@ -159,7 +165,7 @@ When MathML is present, **you (the evaluator) must run** the full **NLB MathML G
 **File**: [EPUB directory path]
 **Evaluated**: [date]
 **Declared guideline**: [version from package.opf, or "none declared"]
-**Guidelines used for validation**: Nordic EPUB [2015-1 | 2020-1 | 2025-1] only, WCAG 2.2
+**Guidelines used for validation**: Nordic EPUB [2015-1 | 2020-1 | 2025-1] only, WCAG 2.2. When MathML is present, also state the MathML checklist used: NLB MathML Guidelines (2015-1) or Nordic MathML Guidelines (2020-1 or 2025-1).
 
 (If no guideline was declared, state "No nordic:guidelines/dcterms:conformsTo found; validated against 2025-1 by default.")
 
@@ -184,14 +190,14 @@ List **every** finding in the table below. One row per finding. Include file pat
 
 | Severity | Category | File | Line | Current (what is in the file) | Checklist requirement | Action |
 |----------|----------|------|------|-------------------------------|------------------------|--------|
-| 🔴/🟡/🟢 | Package / Navigation / Content / Images / Tables / MathML / Page breaks | e.g. 590233-007-chapter.xhtml | e.g. 42 | Quote or short description of the current markup or value | Exact requirement from the version-specific or MathML checklist | What the operator should change (e.g. "Add `<thead>` with `<th scope=\"col\">` for each column") |
+| 🔴/🟡/🟢 | Package / Navigation / Content / Images / Tables / MathML / Page breaks | e.g. 590233-007-chapter.xhtml | e.g. 42 | Quote or short description of the current markup or value | Exact requirement from the version-specific or applicable MathML checklist (NLB for 2015-1, Nordic for 2020-1/2025-1) | What the operator should change (e.g. "Add `<thead>` with `<th scope=\"col\">` for each column") |
 | … | … | … | … | … | … | … |
 
 Add more rows as needed. Group by severity (Critical first, then Warnings, then Recommendations) if you prefer, or keep one table sorted by file/line. Ensure every deviation from the checklists is listed.
 
 ### MathML: Addendum for upgrading to the new guideline version
 
-(Include when MathML is present and relevant.) Validation was run against the Nordic MathML checklist (2022). For changes required to upgrade this EPUB to the newer MathML guideline version, add rows to the table above or a separate short list with file, line, current, new guideline requirement, and action.
+Include only when the declared version is **2015-1** (validation was against NLB MathML Guidelines). For changes required to upgrade this EPUB to the Nordic MathML Guidelines, add rows to the table above or a separate short list with file, line, current, new guideline requirement, and action; use [mathml-guidelines-differences.md](mathml-guidelines-differences.md). When the declared version is 2020-1 or 2025-1, state "N/A — validation was against Nordic MathML Guidelines" or omit this subsection.
 
 ## Files examined
 
@@ -224,5 +230,5 @@ Apply severity **only for requirements of the declared guideline version**. Do n
   - 2025-1: [nordic-epub-checklist.md](nordic-epub-checklist.md) (2025-1)
   - 2020-1: [nordic-epub-checklist-2020-1.md](nordic-epub-checklist-2020-1.md)
   - 2015-1: [nordic-epub-checklist-2015-1.md](nordic-epub-checklist-2015-1.md)
-- For MathML validation: [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines, 2022). For new MathML validation: [mathml-checklist.md](mathml-checklist.md) (Nordic MathML Guidelines). For changes required to upgrade to the newer MathML guideline version: [mathml-guidelines-differences.md](mathml-guidelines-differences.md).
+- For MathML validation the checklist depends on the declared version: **2015-1** → [mathml-checklist-nlb-production.md](mathml-checklist-nlb-production.md) (NLB MathML Guidelines); **2020-1 or 2025-1** → [mathml-checklist.md](mathml-checklist.md) (Nordic MathML Guidelines). For changes required to upgrade from NLB to Nordic (when 2015-1 was used): [mathml-guidelines-differences.md](mathml-guidelines-differences.md).
 - For WCAG mapping: [wcag-mapping.md](wcag-mapping.md)
