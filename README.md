@@ -1,6 +1,6 @@
 # Nordic EPUB Evaluation
 
-A [Skill](https://skills.sh) that evaluates **unzipped** EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2, and MathML (Nordic checklist and NLB production). Validation uses only the guideline version the EPUB declares in its package metadata; MathML is checked against both checklists and the report includes a short summary of differences between them.
+A [Skill](https://skills.sh) that evaluates **unzipped** EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2, and MathML. Validation uses only the guideline version the EPUB declares in its package metadata. When MathML is present, one MathML checklist is used depending on the declared version: **2015-1** → NLB MathML guidelines; **2020-1 or 2025-1** → Nordic MathML guidelines.
 
 ## Prerequisites: Node.js and npx
 
@@ -35,8 +35,8 @@ Either:
 ## What It Validates
 
 - **Phase 0**: Reads `package.opf` to determine declared guideline (2015-1, 2020-1, or 2025-1). If none is declared, evaluation defaults to 2025-1.
-- **Phase 1–2**: Package metadata, accessibility metadata, navigation (TOC, page-list), content structure, images, tables, MathML (if present) against **both** Nordic and NLB production checklists, and page breaks — all according to the **declared** version only.
-- **Phase 3**: Produces a structured report (summary table with separate rows for MathML (Nordic) and MathML (NLB production), critical/warning/recommendation lists, short summary of MathML guideline differences, references).
+- **Phase 1–2**: Package metadata, accessibility metadata, navigation (TOC, page-list), content structure, images, tables, MathML (if present) against the version-appropriate MathML checklist (NLB for 2015-1, Nordic for 2020-1/2025-1), and page breaks — all according to the **declared** version only.
+- **Phase 3**: Produces a structured report (summary table with one MathML row based on the checklist used, critical/warning/recommendation lists, references). When 2015-1 was used for MathML, the report may include an addendum on upgrading to Nordic MathML guidelines.
 
 Version-specific rules (e.g. nav roles, page-break roles, required accessibility metadata) are applied only for the declared version; requirements from other versions are not reported as failures.
 
