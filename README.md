@@ -2,6 +2,18 @@
 
 A [Skill](https://skills.sh) that evaluates **unzipped** EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2, and MathML. Validation uses only the guideline version the EPUB declares in its package metadata. When MathML is present, one MathML checklist is used depending on the declared version: **2015-1** → NLB MathML guidelines; **2020-1 or 2025-1** → Nordic MathML guidelines.
 
+## Contents
+
+- [Prerequisites: Node.js and npx](#prerequisites-nodejs-and-npx)
+- [Installation](#installation)
+- [How to work with this skill](#how-to-work-with-this-skill)
+  - [Commands and example prompts](#commands-and-example-prompts)
+- [How to contribute](#how-to-contribute)
+- [How to update the skill (step-by-step)](#how-to-update-the-skill-step-by-step)
+- [How to test the changes you just implemented](#how-to-test-the-changes-you-just-implemented)
+- [References](#references)
+- [Repository structure](#repository-structure)
+
 ## Prerequisites: Node.js and npx
 
 The installation command uses `npx`, which comes with **Node.js**. If you don't have Node.js yet:
