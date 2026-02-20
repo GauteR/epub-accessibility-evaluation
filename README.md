@@ -72,26 +72,6 @@ This section is for contributors who want to edit the skill in the browser witho
 
 **What you need:** A web browser (Chrome, Edge, Firefox, or Safari), a [GitHub account](https://github.com/join) (free; confirm your email), and **write access** to this repository (you must be added as a collaborator). If you do not have write access, use the fork method described at the end of this section.
 
-```mermaid
-flowchart LR
-  subgraph prep [Preparation]
-    A[GitHub account]
-    B[Open repo URL]
-  end
-  subgraph edit [Edit]
-    C[Create branch]
-    D[Open file]
-    E[Edit with pencil]
-    F[Commit to your branch]
-  end
-  subgraph send [Submit]
-    G[Compare and pull request]
-    H[Fill title and description]
-    I[Create pull request]
-  end
-  A --> B --> C --> D --> E --> F --> G --> H --> I
-```
-
 ### 1. Open the project on GitHub
 
 Go to: **<https://github.com/gauter/nordic-epub-evaluation>**
