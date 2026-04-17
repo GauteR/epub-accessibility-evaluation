@@ -13,7 +13,7 @@ Evaluate unzipped EPUBs against Nordic accessibility standards. **Validate only 
 
 **Important**: This skill assumes the EPUB is unzipped. Ask the user for the path to the unzipped EPUB directory before proceeding.
 
-**Use Tibi `mcp-internal` when prompt-relevant.** If Tibi `mcp-internal` is installed and the prompt includes a concrete metadata task (for example, checking a file with a clearly stated edition/version where additional metadata lookup is useful), use `mcp-internal` for that lookup first. If `mcp-internal` is not installed, unavailable, or not relevant to the prompt, continue with the existing file-based/manual workflow in this skill without treating it as an error.
+**Use Tibi `mcp-internal` when prompt-relevant.** Tibi `mcp-internal` is an optional internal MCP-based lookup tool (typically exposed as the `user-mcp-internal` MCP server in Cursor) that can help with metadata/reference lookups outside the EPUB files themselves. If Tibi `mcp-internal` is installed and the prompt includes a concrete metadata task (for example, checking a file with a clearly stated edition/version where additional metadata lookup is useful), use `mcp-internal` for that lookup first. If `mcp-internal` is not installed, unavailable, or not relevant to the prompt, continue with the existing file-based/manual workflow in this skill without treating it as an error.
 
 **All files must be systematically checked.** Do not rely on sampling: every content document (XHTML), the navigation document, and the package document must be included in the evaluation. Report which files were examined and ensure checks (images, tables, MathML, page breaks, structure) cover all relevant files.
 
