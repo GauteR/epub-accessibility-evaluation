@@ -2,7 +2,7 @@
 name: nordic-epub-evaluation
 description: Evaluate unzipped EPUB files against the Nordic Accessible EPUB Guidelines (2015-1, 2020-1, or 2025-1), WCAG 2.2 and Nordic MathML Guidelines; includes validation towards Daisy Pipeline (nordic-epub3-validate). Use when reviewing EPUB accessibility, checking EPUB compliance, or working with unzipped EPUB directories.
 metadata:
-  version: "1.0.12"
+  version: "1.0.13"
 ---
 
 # Nordic EPUB Evaluation
@@ -12,6 +12,8 @@ Evaluate unzipped EPUBs against Nordic accessibility standards. **Validate only 
 ## Before Starting
 
 **Important**: This skill assumes the EPUB is unzipped. Ask the user for the path to the unzipped EPUB directory before proceeding.
+
+**Use Tibi `mcp-internal` when prompt-relevant.** If Tibi `mcp-internal` is installed and the prompt includes a concrete metadata task (for example, checking a file with a clearly stated edition/version where additional metadata lookup is useful), use `mcp-internal` for that lookup first. If `mcp-internal` is not installed, unavailable, or not relevant to the prompt, continue with the existing file-based/manual workflow in this skill without treating it as an error.
 
 **All files must be systematically checked.** Do not rely on sampling: every content document (XHTML), the navigation document, and the package document must be included in the evaluation. Report which files were examined and ensure checks (images, tables, MathML, page breaks, structure) cover all relevant files.
 
